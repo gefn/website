@@ -1,6 +1,6 @@
 # Gefn.is website
 
-## Built using Static Site oilerplate
+## Built using Static Site Boilerplate
 
 [![Build Status](https://travis-ci.org/ericalli/static-site-boilerplate.svg?branch=master)](https://travis-ci.org/ericalli/static-site-boilerplate)
 [![devDependency Status](https://david-dm.org/ericalli/static-site-boilerplate/dev-status.svg)](https://david-dm.org/ericalli/static-site-boilerplate?type=dev)
