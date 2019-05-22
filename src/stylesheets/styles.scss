@@ -1,1 +1,433 @@
-// Add your styles here
+/**
+ * Computes a CSS calc function that betweens a value from
+ * A to B over viewport-width A to viewport-width B.
+ * Requires a media query to cap the value at B.
+ * https://css-tricks.com/between-the-lines/
+ */
+
+@function between($from, $to, $fromWidth, $toWidth) {
+  $slope: ($to - $from) / ($toWidth - $fromWidth);
+  $base: $from - $slope * $fromWidth;
+
+  @return calc(#{$base} + #{100vw * $slope});
+}
+
+/**
+  *  Variables
+  */
+
+$mobileMin: 320px;
+$mobileHalf: 500px;
+$mobileMax: 799px;
+$desktopMin: 800px;
+$desktopHalf: 1200px;
+$desktopMax: 1599px;
+
+$mobileMinRem: 20rem;
+$mobileMaxRem: 49.9375rem;
+$desktopMinRem: 50rem;
+$desktopMaxRem: 99.9375rem;
+
+$primary: #20262d;
+$light: #858e99;
+$lighter: #edf1f5;
+$white: white;
+$green: #009a4a;
+$blue: #00abe6;
+$lightGreen: #8ac170;
+$gold: #ffc163;
+
+/**
+  *  Gefn's styling
+  */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter";
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: -1px;
+  color: $primary;
+
+  @media (min-width: $mobileMin) {
+    font-size: between(16px, 20px, $mobileMin, $desktopMax);
+  }
+
+  @media (min-width: $desktopMax) {
+    font-size: 20px;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  hyphens: manual;
+  //reset
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 3rem;
+  letter-spacing: -3px;
+  line-height: 1.1;
+
+  @media (min-width: $mobileMin) {
+    font-size: between(3rem, 5rem, $mobileMinRem, $desktopMaxRem);
+  }
+
+  @media (min-width: $mobileMax) {
+    letter-spacing: -4px;
+  }
+
+  @media (min-width: $desktopMax) {
+    font-size: 5rem;
+  }
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -1px;
+  line-height: 1.3;
+  margin-bottom: 2.5rem;
+
+  @media (min-width: $mobileMin) {
+    font-size: between(2rem, 3rem, $mobileMinRem, $desktopMaxRem);
+  }
+
+  @media (min-width: $mobileMax) {
+    letter-spacing: -2px;
+  }
+
+  @media (min-width: $desktopMax) {
+    font-size: 3rem;
+  }
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -1px;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+
+  @media (min-width: $mobileMin) {
+    font-size: between(1.6rem, 2.4rem, $mobileMinRem, $desktopMaxRem);
+  }
+
+  @media (min-width: $mobileMax) {
+    letter-spacing: -3px;
+  }
+
+  @media (min-width: $desktopMax) {
+    font-size: 2.4rem;
+  }
+}
+
+p {
+  font-size: 1.1rem;
+  max-width: 37rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &.xl {
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+}
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+  color: $primary;
+}
+
+img {
+  width: 100%;
+}
+
+.highlight {
+  color: $green;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 4rem 0;
+
+  .inner {
+    align-items: flex-end;
+
+    .logo {
+      max-width: 8rem;
+      margin-left: 1rem;
+    }
+    .menu {
+      a {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  @media (min-width: $mobileMin) {
+    padding-left: between(0.5rem, 7.5rem, $mobileMinRem, $desktopMaxRem);
+    padding-right: between(0.5rem, 7.5rem, $mobileMinRem, $desktopMaxRem);
+  }
+
+  @media (min-width: $desktopMax) {
+    max-width: 1599px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+  }
+
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+
+    &.image-col {
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 2.5rem;
+
+      @media (min-width: $mobileMax) {
+        position: absolute;
+        top: 5.5rem;
+        z-index: -1;
+        height: calc(100% - 11rem);
+        margin-bottom: 0;
+
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &.text-col {
+      @media (min-width: $mobileMax) {
+        margin-top: 8.5rem;
+        margin-bottom: 8.5rem;
+      }
+    }
+  }
+
+  @media (min-width: $mobileMax) {
+    .col-1 {
+      width: 16.67%;
+    }
+    .col-2 {
+      width: 33.34%;
+    }
+    .col-3 {
+      width: 50%;
+    }
+    .col-4 {
+      width: 66.67%;
+    }
+    .col-5 {
+      width: 83.34%;
+    }
+    .col-6 {
+      width: 100%;
+    }
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+
+  .inner {
+    flex-direction: column;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+
+    @media (min-width: $mobileMax) {
+      flex-direction: row;
+
+      // If the section's text is on the right or on the left
+      &.right {
+        justify-content: flex-end;
+
+        .image-col {
+          left: 0;
+        }
+      }
+      &.left {
+        .image-col {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+
+    .inner {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      .col-1 {
+        height: 100%;
+        border-left: rgba(32, 38, 45, 0.05) solid 1px;
+
+        &:last-of-type {
+          border-right: rgba(32, 38, 45, 0.05) solid 1px;
+        }
+
+        @media (max-width: $mobileMax) {
+          &:nth-child(2) {
+            border-right: rgba(32, 38, 45, 0.05) solid 1px;
+          }
+          &:nth-child(n + 3) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &#hero {
+    .inner {
+      padding-top: 10rem;
+      padding-bottom: 8rem;
+
+      @media (min-width: $mobileMin) {
+        padding-top: between(10rem, 24rem, $mobileMinRem, $desktopMaxRem);
+        padding-bottom: between(8rem, 20rem, $mobileMinRem, $desktopMaxRem);
+      }
+
+      @media (max-width: $mobileMax) {
+        br {
+          display: none;
+        }
+      }
+
+      @media (min-width: $desktopMax) {
+        padding-top: 24rem;
+        padding-bottom: 20rem;
+      }
+    }
+  }
+
+  &.step {
+    .inner {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+
+      .step-number {
+        display: flex;
+        font-size: 6rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        color: $lighter;
+        z-index: -1;
+        margin-bottom: -3rem;
+        margin-left: -1.5rem;
+      }
+
+      .step-image-col {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 2.5rem;
+      }
+
+      @media (min-width: $mobileMax) {
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .step-image-col {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .text-col {
+          width: 60%;
+          margin-top: 0;
+          margin-bottom: 0;
+
+          @media (min-width: $desktopHalf) {
+            padding-left: 4rem;
+          }
+
+          .step-number {
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            margin-bottom: 0;
+            margin-left: 0;
+
+            @media (min-width: $desktopMin) {
+              left: between(2rem, 6rem, $desktopMinRem, $desktopMaxRem);
+              letter-spacing: -4px;
+            }
+
+            @media (min-width: $desktopHalf) {
+              top: 3rem;
+            }
+
+            @media (min-width: $desktopMax) {
+              left: 6rem;
+              letter-spacing: -4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
