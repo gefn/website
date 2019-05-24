@@ -8,6 +8,7 @@ module.exports = {
     "declaration-colon-newline-after": null,
     "at-rule-empty-line-before": null,
     "rule-empty-line-before": null,
-    "font-family-no-missing-generic-family-keyword": null
+    "font-family-no-missing-generic-family-keyword": null,
+    indentation: null
   }
 };
