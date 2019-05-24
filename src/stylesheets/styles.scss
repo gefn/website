@@ -515,9 +515,22 @@ section {
       }
 
       .step-image-col {
+        position: relative;
         padding-left: 0;
         padding-right: 0;
         margin-bottom: 2.5rem;
+
+        .qvik-image {
+          max-height: 22rem;
+          object-fit: cover;
+        }
+
+        .co2-image {
+          position: absolute;
+          bottom: 2rem;
+          left: -0.5rem;
+          width: 60%;
+        }
       }
 
       @media (min-width: $desktopMin) {
@@ -529,6 +542,22 @@ section {
         .step-image-col {
           padding-left: 0;
           padding-right: 0;
+          min-height: 20rem;
+
+          .qvik-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-height: initial;
+            height: 32rem;
+            z-index: 3;
+          }
+
+          .co2-image {
+            bottom: -6rem;
+            left: -4rem;
+            z-index: 4;
+          }
         }
 
         .step-number {
@@ -563,6 +592,10 @@ section {
           }
         }
       }
+    }
+
+    &#03 {
+      z-index: 5;
     }
   }
 
@@ -640,6 +673,23 @@ section {
             margin: 0 -2.5rem 1rem 0;
             z-index: 2;
             text-align: right;
+            transition: all 0.3s;
+          }
+          svg {
+            path {
+              transition: all 0.3s;
+            }
+          }
+
+          &:hover {
+            p {
+              margin: 0 -1rem 1rem 0;
+            }
+            svg {
+              path {
+                stroke: #dae0e7;
+              }
+            }
           }
         }
       }
