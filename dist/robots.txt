@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: http://gefn.is//sitemap.xml
-Host: gefn.is
