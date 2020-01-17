@@ -63,6 +63,11 @@ body {
   }
 }
 
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -336,7 +341,7 @@ nav {
 
         img {
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
       }
     }
@@ -379,6 +384,16 @@ section {
   width: 100%;
   position: relative;
 
+  @media (min-width: $desktopMin) {
+    &#s01 {
+      .inner {
+        .step-image-col {
+          margin-bottom: -10rem;
+        }
+      }
+    }
+  }
+
   .inner {
     flex-direction: column;
     padding-top: 5.5rem;
@@ -386,6 +401,16 @@ section {
 
     @media (min-width: $desktopMin) {
       flex-direction: row;
+
+      .image-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .section-image {
+          width: 80%;
+        }
+      }
 
       // If the section's text is on the right or on the left
       &.right {
@@ -615,6 +640,13 @@ section {
       }
     }
 
+    @media (min-width: $desktopMin) {
+      .inner {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
     &#03 {
       z-index: 5;
     }
@@ -734,4 +766,3 @@ section {
   top: 10vh;
   left: 0;
 }
-

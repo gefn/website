@@ -30,11 +30,10 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js",
     "start:dist": "cross-env NODE_ENV=production webpack-dev-server --config ./config/webpack.config.js && http-server ./dist -o",
     "setup": "node ./config/site.setup.js",
-    "postinstall": "node ./config/site.setup.js",
     "lint:js": "./node_modules/.bin/eslint \"src/**/*.js\"",
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "build:dist": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
-    "deploy": "dploy"
+    "deploy": "npm run build:dist && git add docs && git commit -am \"Publish latest changes\" && git push"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
