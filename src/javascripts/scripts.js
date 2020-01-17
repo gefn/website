@@ -3,10 +3,6 @@ $(window).on('load', () => {
 });
 
 $(document).ready(() => {
-  const rellax = new Rellax('.rellax', {
-    center: true,
-  });
-
   const controller = new ScrollMagic.Controller();
 
   controller.scrollTo((target) => {
