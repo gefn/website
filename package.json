@@ -33,7 +33,7 @@
     "lint:js": "./node_modules/.bin/eslint \"src/**/*.js\"",
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "build:dist": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
-    "deploy": "rm -rf docs && npm run build:dist && mv dist docs && git add docs && git commit -am \"Publish latest changes\" && git push"
+    "deploy": "rm -rf docs && npm run build:dist && mv dist docs && cp CNAME ./docs && git add docs && git commit -am \"Publish latest changes\" && git push"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
