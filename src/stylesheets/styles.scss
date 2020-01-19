@@ -66,6 +66,7 @@ body {
 .container {
   max-width: 1600px;
   margin: 0 auto;
+  z-index: 0;
 }
 
 body {
@@ -513,7 +514,7 @@ section {
           position: absolute;
           bottom: -3rem;
           right: 1rem;
-
+          z-index: 999;
           @media (min-width: $desktopMin) {
             bottom: -12rem;
             right: calc(16.67% - 2.5rem);
