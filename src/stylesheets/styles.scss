@@ -658,7 +658,7 @@ section {
       }
     }
 
-    &#03 {
+    &#s03 {
       z-index: 5;
     }
   }
@@ -779,4 +779,8 @@ section {
   position: absolute;
   top: 10vh;
   left: 0;
+}
+
+.is-step3 {
+  padding-bottom: 1em;
 }
