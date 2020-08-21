@@ -280,7 +280,14 @@ nav {
       margin-left: 1rem;
     }
 
-    .menu {
+    @media (min-width: $mobileMin) {
+      .logo {
+        max-width: 10rem;
+        margin-left: 1rem;
+      }
+    }
+
+      .menu {
 
       a {
         padding: 1rem;
