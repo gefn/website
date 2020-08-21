@@ -10,6 +10,9 @@ const html = {
   use: [
     {
       loader: 'html-loader',
+      options: {
+        interpolate: true,
+      },
     },
   ],
 };
@@ -31,10 +34,7 @@ const js = {
 
 // Style loaders
 const styleLoader = {
-  loader: 'style-loader',
-  options: {
-    sourceMap,
-  },
+  loader: 'style-loader'
 };
 
 const cssLoader = {
@@ -47,7 +47,9 @@ const cssLoader = {
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    plugins: [require('autoprefixer')()],
+    plugins: [
+      require('autoprefixer')(),
+    ],
     sourceMap,
   },
 };
@@ -114,24 +116,49 @@ const imageLoader = {
 
 const images = {
   test: /\.(gif|png|jpe?g|svg)$/i,
+  exclude: /fonts/,
   use: [
-    'file-loader?name=images/[path][name].[ext]?[hash]',
+    'file-loader?name=images/[name].[hash].[ext]',
     config.env === 'production' ? imageLoader : null,
   ].filter(Boolean),
 };
 
 // Font loaders
 const fonts = {
-  test: /\.(woff|woff2|eot|ttf|otf)$/,
+  test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+  exclude: /images/,
   use: [
     {
       loader: 'file-loader',
       query: {
-        name: '[name].[ext]',
+        name: '[name].[hash].[ext]',
         outputPath: 'fonts/',
       },
     },
   ],
 };
 
-module.exports = [html, js, css, sass, less, images, fonts];
+// Video loaders
+const videos = {
+  test: /\.(mp4|webm)$/,
+  use: [
+    {
+      loader: 'file-loader',
+      query: {
+        name: '[name].[hash].[ext]',
+        outputPath: 'images/',
+      },
+    },
+  ],
+};
+
+module.exports = [
+  html,
+  js,
+  css,
+  sass,
+  less,
+  images,
+  fonts,
+  videos,
+];
