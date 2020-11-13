@@ -47,7 +47,7 @@ $gold: #ffc163;
 
 html,
 body {
-  font-family: "Inter";
+  font-family: "Inter", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
@@ -266,6 +266,13 @@ nav {
   &.scrolled {
     padding: 2rem 0;
 
+    .logo {
+      height: 3rem;
+      width: 3rem;
+      transition: all 0.5s;
+      opacity: 0.5;
+    }
+
     &::after {
       height: 140%;
       opacity: 1;
@@ -276,8 +283,12 @@ nav {
     align-items: flex-end;
 
     .logo {
-      max-width: 8rem;
+      min-width: 3rem;
+      min-height: 3rem;
+      max-width: 6rem;
+      max-height: 6rem;
       margin-left: 1rem;
+      transition: all 0.5s;
     }
 
     @media (min-width: $mobileMin) {
